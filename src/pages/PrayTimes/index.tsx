@@ -35,13 +35,7 @@ const PrayTime = () => {
 
   const { data, isError, error } = timePray;
   if (isError) {
-    if (typeof error === "object") {
-      return (
-        <h1 style={{ textAlign: "center", marginTop: 30 }}>
-          {error?.response?.status} | {error?.response?.statusText}
-        </h1>
-      );
-    }
+    return <h1 style={{ textAlign: "center" }}>Error</h1>;
   }
 
   return (
