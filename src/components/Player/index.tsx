@@ -57,38 +57,40 @@ const Player = () => {
     }
   };
 
-  return (
-    <>
-      {playAudioData.isLoading || playAudioData.data === undefined ? null : (
-        <Container>
-          <Prew onClick={() => lastAudio()}>
-            <AiFillFastBackward />
-          </Prew>
-          <Next onClick={() => nextAudio()}>
-            <AiFillFastForward />
-          </Next>
-          <ReactAudioPlayer
-            className="audio"
-            src={playingAudioSrc}
-            autoPlay
-            controls={true}
-            onEnded={() => nextAudio()}
-          />
-          <Delete
-            onClick={() => {
-              setAudio({
-                surahNum: -1,
-                ayahNumber: -1,
-                totalAyahs: -1,
-              });
-            }}
-          >
-            <HiXMark />
-          </Delete>
-        </Container>
-      )}
-    </>
-  );
+  if (playAudioData.data !== undefined) {
+    return (
+      <>
+        {playAudioData.isLoading || playAudioData.data === undefined ? null : (
+          <Container>
+            <Prew onClick={() => lastAudio()}>
+              <AiFillFastBackward />
+            </Prew>
+            <Next onClick={() => nextAudio()}>
+              <AiFillFastForward />
+            </Next>
+            <ReactAudioPlayer
+              className="audio"
+              src={playingAudioSrc}
+              autoPlay
+              controls={true}
+              onEnded={() => nextAudio()}
+            />
+            <Delete
+              onClick={() => {
+                setAudio({
+                  surahNum: -1,
+                  ayahNumber: -1,
+                  totalAyahs: -1,
+                });
+              }}
+            >
+              <HiXMark />
+            </Delete>
+          </Container>
+        )}
+      </>
+    );
+  } else return null;
 };
 
 export default Player;
