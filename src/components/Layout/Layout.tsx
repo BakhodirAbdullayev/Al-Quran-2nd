@@ -1,4 +1,3 @@
-import RoutesWrapper from "../../Routes";
 import LogoImg from "../../images/quran.png";
 import {
   Body,
