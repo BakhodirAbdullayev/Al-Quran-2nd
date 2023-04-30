@@ -45,8 +45,7 @@ const Layout = ({ children }: LayoutProps) => {
           {audio.surahNum > 0 ? (
             <PlayerWrapper>
               <div className="test">
-                {/* <Player /> */}
-                test
+                <Player />
               </div>
             </PlayerWrapper>
           ) : null}

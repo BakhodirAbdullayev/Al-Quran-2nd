@@ -16,11 +16,15 @@ const Player = () => {
 
   const [playingAudioSrc, setPlayingAudioSrc] = useState<string>("");
   useEffect(() => {
-    setPlayingAudioSrc(
-      playAudioData.data?.data?.surahs[audio.surahNum - 1].ayahs[
-        audio.ayahNumber - 1
-      ].audio
-    );
+    try {
+      setPlayingAudioSrc(
+        playAudioData.data?.data?.surahs[audio.surahNum - 1].ayahs[
+          audio.ayahNumber - 1
+        ].audio
+      );
+    } catch (e) {
+      console.log(e);
+    }
   }, [playAudioData.data, audio]);
   console.log(playingAudioSrc);
 
@@ -57,40 +61,38 @@ const Player = () => {
     }
   };
 
-  if (playAudioData.data !== undefined) {
-    return (
-      <>
-        {playAudioData.isLoading || playAudioData.data === undefined ? null : (
-          <Container>
-            <Prew onClick={() => lastAudio()}>
-              <AiFillFastBackward />
-            </Prew>
-            <Next onClick={() => nextAudio()}>
-              <AiFillFastForward />
-            </Next>
-            <ReactAudioPlayer
-              className="audio"
-              src={playingAudioSrc}
-              autoPlay
-              controls={true}
-              onEnded={() => nextAudio()}
-            />
-            <Delete
-              onClick={() => {
-                setAudio({
-                  surahNum: -1,
-                  ayahNumber: -1,
-                  totalAyahs: -1,
-                });
-              }}
-            >
-              <HiXMark />
-            </Delete>
-          </Container>
-        )}
-      </>
-    );
-  } else return null;
+  return (
+    <>
+      {playAudioData.isLoading || playAudioData.data === undefined ? null : (
+        <Container>
+          <Prew onClick={() => lastAudio()}>
+            <AiFillFastBackward />
+          </Prew>
+          <Next onClick={() => nextAudio()}>
+            <AiFillFastForward />
+          </Next>
+          <ReactAudioPlayer
+            className="audio"
+            src={playingAudioSrc}
+            autoPlay
+            controls={true}
+            onEnded={() => nextAudio()}
+          />
+          <Delete
+            onClick={() => {
+              setAudio({
+                surahNum: -1,
+                ayahNumber: -1,
+                totalAyahs: -1,
+              });
+            }}
+          >
+            <HiXMark />
+          </Delete>
+        </Container>
+      )}
+    </>
+  );
 };
 
 export default Player;
