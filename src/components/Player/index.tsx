@@ -25,7 +25,7 @@ const Player = () => {
     } catch (e) {
       console.log(e);
     }
-  }, [playAudioData?.data, audio]);
+  }, [audio]);
   console.log(playingAudioSrc);
 
   const lastAudio = () => {
