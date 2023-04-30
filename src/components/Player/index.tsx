@@ -18,14 +18,14 @@ const Player = () => {
   useEffect(() => {
     try {
       setPlayingAudioSrc(
-        playAudioData.data?.data?.surahs[audio.surahNum - 1].ayahs[
-          audio.ayahNumber - 1
-        ].audio
+        playAudioData?.data?.data?.surahs[audio.surahNum - 1]?.ayahs[
+          audio?.ayahNumber - 1
+        ]?.audio
       );
     } catch (e) {
       console.log(e);
     }
-  }, [playAudioData.data, audio]);
+  }, [playAudioData?.data, audio]);
   console.log(playingAudioSrc);
 
   const lastAudio = () => {
