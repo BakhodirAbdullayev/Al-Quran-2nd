@@ -14,7 +14,7 @@ const Player = () => {
   });
   console.log(playAudioData);
 
-  const [playingAudioSrc, setPlayingAudioSrc] = useState<string>("");
+  const [playingAudioSrc, setPlayingAudioSrc] = useState("");
   useEffect(() => {
     try {
       setPlayingAudioSrc(
