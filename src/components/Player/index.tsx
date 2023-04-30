@@ -71,7 +71,7 @@ const Player = () => {
           <Next onClick={() => nextAudio()}>
             <AiFillFastForward />
           </Next>
-          <ReactAudioPlayer
+          {/* <ReactAudioPlayer
             className="audio"
             src={
               audio.surahNum > 0
@@ -83,7 +83,7 @@ const Player = () => {
             autoPlay
             controls={true}
             onEnded={() => nextAudio()}
-          />
+          /> */}
           <Delete
             onClick={() => {
               setAudio({
