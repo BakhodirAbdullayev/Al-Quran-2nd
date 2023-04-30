@@ -67,7 +67,7 @@ const Player = () => {
 
   return (
     <>
-      {playAudioData.isLoading || playAudioData.data === undefined ? null : (
+      {playingAudioSrc === "" ? null : (
         <Container>
           <Prew onClick={() => lastAudio()}>
             <AiFillFastBackward />
