@@ -1,8 +1,14 @@
 import React from "react";
 import { Container, Text, Photo, Button } from "./Home.styles";
 import Img from "../../images/quran.png";
+import { useHafiz } from "../../utilities/state";
+import { useGetData } from "../../utilities/getData";
 
 const Home = () => {
+  const { hafiz } = useHafiz();
+  const playAudioData = useGetData(["audio version", hafiz], `quran/${hafiz}`, {
+    enabled: !!hafiz,
+  });
   return (
     <Container>
       <Text>

@@ -17,11 +17,12 @@ const Player = () => {
   const [playingAudioSrc, setPlayingAudioSrc] = useState<string>("");
   useEffect(() => {
     setPlayingAudioSrc(
-      playAudioData?.data?.data?.surahs[audio.surahNum - 1].ayahs[
+      playAudioData.data?.data?.surahs[audio.surahNum - 1].ayahs[
         audio.ayahNumber - 1
       ].audio
     );
   }, [playAudioData.data, audio]);
+  console.log(playingAudioSrc);
 
   const lastAudio = () => {
     if (audio.ayahNumber > 1) {
@@ -58,7 +59,7 @@ const Player = () => {
 
   return (
     <>
-      {playAudioData.isLoading ? null : (
+      {playAudioData.isLoading || playAudioData.data === undefined ? null : (
         <Container>
           <Prew onClick={() => lastAudio()}>
             <AiFillFastBackward />
