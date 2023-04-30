@@ -14,19 +14,19 @@ const Player = () => {
   });
   console.log(playAudioData);
 
-  const [playingAudioSrc, setPlayingAudioSrc] = useState("");
-  useEffect(() => {
-    try {
-      setPlayingAudioSrc(
-        playAudioData?.data?.data?.surahs[audio.surahNum - 1]?.ayahs[
-          audio?.ayahNumber - 1
-        ]?.audio
-      );
-    } catch (e) {
-      console.log(e);
-    }
-  }, [audio]);
-  console.log(playingAudioSrc);
+  // const [playingAudioSrc, setPlayingAudioSrc] = useState("");
+  // useEffect(() => {
+  //   try {
+  //     setPlayingAudioSrc(
+  //       playAudioData?.data?.data?.surahs[audio.surahNum - 1]?.ayahs[
+  //         audio?.ayahNumber - 1
+  //       ]?.audio
+  //     );
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }, [audio]);
+  // console.log(playingAudioSrc);
 
   const lastAudio = () => {
     if (audio.ayahNumber > 1) {
@@ -73,7 +73,13 @@ const Player = () => {
           </Next>
           <ReactAudioPlayer
             className="audio"
-            src={playingAudioSrc}
+            src={
+              audio.surahNum > 0
+                ? playAudioData?.data?.data?.surahs[audio.surahNum - 1]?.ayahs[
+                    audio?.ayahNumber - 1
+                  ]?.audio
+                : ""
+            }
             autoPlay
             controls={true}
             onEnded={() => nextAudio()}
