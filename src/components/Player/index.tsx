@@ -14,19 +14,23 @@ const Player = () => {
   });
   console.log(playAudioData);
 
-  // const [playingAudioSrc, setPlayingAudioSrc] = useState("");
-  // useEffect(() => {
-  //   try {
-  //     setPlayingAudioSrc(
-  //       playAudioData?.data?.data?.surahs[audio.surahNum - 1]?.ayahs[
-  //         audio?.ayahNumber - 1
-  //       ]?.audio
-  //     );
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }, [audio]);
-  // console.log(playingAudioSrc);
+  const [playingAudioSrc, setPlayingAudioSrc] = useState("");
+  useEffect(() => {
+    try {
+      if (playAudioData.data !== undefined) {
+        console.log(playAudioData?.data?.data);
+
+        setPlayingAudioSrc(
+          playAudioData?.data?.data?.surahs[audio.surahNum - 1]?.ayahs[
+            audio?.ayahNumber - 1
+          ]?.audio
+        );
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }, [playAudioData?.data, audio]);
+  console.log(playingAudioSrc);
 
   const lastAudio = () => {
     if (audio.ayahNumber > 1) {
@@ -71,19 +75,13 @@ const Player = () => {
           <Next onClick={() => nextAudio()}>
             <AiFillFastForward />
           </Next>
-          {/* <ReactAudioPlayer
+          <ReactAudioPlayer
             className="audio"
-            src={
-              audio.surahNum > 0
-                ? playAudioData?.data?.data?.surahs[audio.surahNum - 1]?.ayahs[
-                    audio?.ayahNumber - 1
-                  ]?.audio
-                : ""
-            }
+            src={playingAudioSrc}
             autoPlay
             controls={true}
             onEnded={() => nextAudio()}
-          /> */}
+          />
           <Delete
             onClick={() => {
               setAudio({
