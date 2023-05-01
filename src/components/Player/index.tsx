@@ -82,7 +82,7 @@ const Player = () => {
             controls={true}
             onEnded={() => nextAudio()}
           /> */}
-          <audio src={playingAudioSrc} controls />
+          <audio src={playingAudioSrc} controls autoPlay={true} />
           <Delete
             onClick={() => {
               setAudio({
