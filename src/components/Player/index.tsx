@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ReactAudioPlayer from "react-audio-player";
 import { HiXMark } from "react-icons/hi2";
 import { AiFillFastBackward, AiFillFastForward } from "react-icons/ai";
 import { Container, Prew, Delete, Next } from "./Player.styles";
@@ -75,13 +74,7 @@ const Player = () => {
           <Next onClick={() => nextAudio()}>
             <AiFillFastForward />
           </Next>
-          {/* <ReactAudioPlayer
-            className="audio"
-            src={playingAudioSrc}
-            autoPlay
-            controls={true}
-            onEnded={() => nextAudio()}
-          /> */}
+
           <audio
             src={playingAudioSrc}
             controls

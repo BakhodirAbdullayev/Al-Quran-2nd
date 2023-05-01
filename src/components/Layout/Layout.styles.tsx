@@ -20,6 +20,7 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 30px;
+  z-index: 100;
 `;
 
 export const Logo = styled(Link)`

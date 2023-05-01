@@ -19,6 +19,7 @@ import {
 } from "./Ayahs.styles";
 import { GetSurahIdParams, SingleAyah } from "./Ayahs.types";
 import Loader from "../Loader";
+import AyahSkeleton from "../Skeleton/AyahSkeleton";
 
 const Ayahs = ({ surahId }: GetSurahIdParams) => {
   const { lang } = useLang();
@@ -39,7 +40,7 @@ const Ayahs = ({ surahId }: GetSurahIdParams) => {
   return (
     <Container>
       {arabicAyahs.isLoading || langAyahs.isLoading ? (
-        <Loader />
+        <AyahSkeleton />
       ) : (
         langAyahs.data.data.ayahs.map((a: SingleAyah, i: number) => (
           <Ayah key={a?.number}>

@@ -5,6 +5,8 @@ import { CardsWrapper, Container, Pag } from "./Surahs.styles";
 import { Pagination } from "antd";
 import SingleSurahCard from "../../components/SingleSurahCard";
 import { SurahObjType } from "./Surahs.types";
+import MiniSkeleton from "../../components/Skeleton/MiniSkeleton";
+import { Box } from "@chakra-ui/react";
 
 const Surahs = () => {
   const surahsData = useGetData(["all surahs"], "surah");
@@ -23,11 +25,27 @@ const Surahs = () => {
     setCurrent(cur);
     setLimit(size);
   };
+  const skeleton = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   return (
     <Container>
       {surahsData.isLoading ? (
-        "Loading"
+        <Box
+          display={"flex"}
+          alignItems="center"
+          maxW={"100%"}
+          flexWrap="wrap"
+          gap={5}
+          justifyContent="space-evenly"
+        >
+          {skeleton.map((s) => {
+            if (window.innerWidth < 500 && s > 3) {
+              return null;
+            } else if (window.innerWidth < 800 && s > 7) {
+              return null;
+            } else return <MiniSkeleton key={s} />;
+          })}
+        </Box>
       ) : (
         <>
           <CardsWrapper>

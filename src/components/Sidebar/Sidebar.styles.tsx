@@ -8,6 +8,7 @@ export const Container = styled.div`
   position: fixed;
   bottom: 0;
   background: #fff;
+  z-index: 1000;
   ${mobile({
     width: "100%",
     height: 60,
