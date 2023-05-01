@@ -77,7 +77,8 @@ const Player = () => {
           </Next>
           <ReactAudioPlayer
             className="audio"
-            src={playingAudioSrc}
+            // src={playingAudioSrc}
+            src={""}
             autoPlay
             controls={true}
             onEnded={() => nextAudio()}
