@@ -75,14 +75,14 @@ const Player = () => {
           <Next onClick={() => nextAudio()}>
             <AiFillFastForward />
           </Next>
-          <ReactAudioPlayer
+          {/* <ReactAudioPlayer
             className="audio"
-            // src={playingAudioSrc}
-            src={""}
+            src={playingAudioSrc}
             autoPlay
             controls={true}
             onEnded={() => nextAudio()}
-          />
+          /> */}
+          <audio src={playingAudioSrc} controls />
           <Delete
             onClick={() => {
               setAudio({
