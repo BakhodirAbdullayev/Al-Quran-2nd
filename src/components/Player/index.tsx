@@ -87,6 +87,7 @@ const Player = () => {
             controls
             autoPlay={true}
             className="audio"
+            onEnded={() => nextAudio()}
           />
           <Delete
             onClick={() => {
